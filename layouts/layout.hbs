@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2017">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+
+  <link type="text/css" href="assets/css/style.css" rel="stylesheet" media="screen" />
+
+</head>
+<body class="home"><div class="wrapper">
+
+  <header>
+    <h1>{{ title }}</h1>
+    <nav>
+      <ul>
+        <li><a href="https://www.etsy.com/uk/shop/MadeByRumyra">Visit Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="main-hero">
+      {{{contents}}}  
+    </section>
+    
+    <section class="main-content">
+
+      <ul>
+        {{#each etsy.results}}
+        <li>
+          <a href="{{this.url}}">
+            <p>{{this.title}}</p>
+            <img src="{{this.MainImage.url_570xN}}" />
+          </a>
+        </li>
+        {{/each}}
+
+      </ul>
+      
+    </section>
+
+    
+  </main>
+    
+</div></body>
+</html>
