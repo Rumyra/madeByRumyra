@@ -1,0 +1,55 @@
+$blue: hsla(213, 35%, 25%, 1);
+$purple: hsla(302, 15%, 39%, 1);
+$pink: hsla(339, 37%, 55%, 1);
+$peach: hsla(359, 41%, 79%, 1);
+$taupe: hsla(26, 27%, 85%, 1);
+$cream: hsla(47, 45%, 95%, 1);
+$black: hsla(194, 74%, 11%, 1);
+$offWhite: hsla(47, 31%, 98%, 1);
+$brightWhite: hsla(60, 33%, 99%, 1);
+
+$brand1: $cream;
+$brand2: $taupe;
+$brand3: $peach;
+$brand4: $pink;
+$brand5: $purple;
+$brand6: $blue;
+
+$white: $brightWhite;
+$black: $black;
+
+$errorColour: $pink;
+$successColour: $blue;
+
+//2.2 Font imports & settings
+@include font-face('Font Awesome', '../fonts/fontAwesome/fontawesome-webfont');
+@include font-face('Khula', '../fonts/Khula/Khula-Light');
+@include font-face('Khula', '../fonts/Khula/Khula-SemiBold', bold);
+@include font-face('Great Vibes', '../fonts/GreatVibes/GreatVibes-Regular', normal, italic);
+
+$font:'Khula', Helvetica, Arial, sans-serif !default;
+$fontSize:1em !default;
+$lineHeight:1.8 !default;
+$letterSpacing:0.05em;
+
+$headerFont: 'Khula', Helvetica, Arial, sans-serif !default;
+$headerLineHeight:1.5;
+
+$iconFont:'Font Awesome', monospace !default;
+$iconFontSize:20px !default;
+$iconLineHeight:25px !default;
+
+// top and bottom space
+$verticalSpace:1.8em !default;
+// left and right space
+$gutter:1.8em !default;
+
+// use with breakpoint mixin like @include until($small) or @include at-least($screenLarge)
+$screenSmall:620px;
+$screenMedium:769px;
+$screenLarge:860px;
+$screenXlarge:1280px;
+
+
+
+

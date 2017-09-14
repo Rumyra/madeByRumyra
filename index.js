@@ -35,7 +35,7 @@ fetch("https://openapi.etsy.com/v2/shops/MadeByRumyra/listings/active?limit=100&
       .clean(true) // rebuild everything
 
       .use(sass({
-        outputDir: 'assets/',   // This changes the output dir to 'build/assets/'
+        outputDir: 'assets/css',   // This changes the output dir to 'build/assets/'
         sourceMap: true
       }))
 
@@ -61,11 +61,7 @@ fetch("https://openapi.etsy.com/v2/shops/MadeByRumyra/listings/active?limit=100&
         if (err) { throw err; }
       });
 
-
-
-    console.log(etsyData);
-
-
+    // console.log(etsyData);
 
   } )
   .catch( (err) => console.log('sad face '+err) );

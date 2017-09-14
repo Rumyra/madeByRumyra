@@ -1,0 +1,95 @@
+// Contents
+// 0) page common
+// 1) home
+// 2) about
+// 3) portfolio
+// 4) contact
+
+// div[class^="page-"] {
+//   margin:0px; padding:$verticalSpace $gutter;
+//   border: 2px solid $white; border-width: 2px 0px;
+//   min-height: 86vh;
+// }
+
+// @supports {
+//   .about-cv {
+//     display:grid; justify-content:space-between;
+//   }
+// }
+
+.about-cv {
+  overflow: auto;
+  section {
+    padding:$verticalSpace $gutter;
+    margin-bottom:2%;
+    box-sizing: border-box;
+    border:1px solid $white;
+    text-align:center;
+
+    &:nth-of-type(6n-5) {
+      background-color: $brand1;
+      @include gradient($brand1, lighten($brand1,6%), 0deg);
+      // @include fancyBorder($brand1);
+    }
+    &:nth-of-type(6n-4) {
+      background-color: $brand2;
+      @include gradient($brand2, lighten($brand2 ,6%), 0deg);
+      // @include fancyBorder($brand2);
+    }
+    &:nth-of-type(6n-3) {
+      background-color: $brand3;
+      // @include fancyBorder($brand3);
+    }
+    &:nth-of-type(6n-2) {
+      background-color: $brand4;
+      // @include fancyBorder($brand4);
+    }
+    &:nth-of-type(6n-1) {
+      background-color: $brand5;
+      // @include fancyBorder($brand5);
+    }
+    &:nth-of-type(6n) {
+      background-color: $brand6;
+      // @include fancyBorder($brand6);
+    }
+
+
+    h2 {
+      &::after {@include partBorder(25%, 25%);}
+    }
+    
+  }
+}
+
+
+// this is messy and I don't like it and blergh
+@supports (display:grid) {
+  .about-cv {
+    display:grid; justify-content:space-between;
+    grid-template-columns: 49.5% 49.5%;
+  }
+}
+@supports not (display:grid) {
+  .about-cv {
+    display: block;
+  }
+  .about-cv section {
+    width: 50%; min-height:450px;
+    float: left;
+  }
+}
+@include until($screenMedium) {
+  .about-cv {
+    display: block;
+    section {
+      width:100%; float:none;
+    }
+  }
+  
+}
+
+// portfolio
+.portfolio {}
+
+// contact
+.contact {}

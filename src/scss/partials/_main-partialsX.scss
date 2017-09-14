@@ -1,0 +1,161 @@
+//CONTENTS
+
+// 1. html & body
+// 2. Site structure
+//     2.1 Main header, aside and footer
+//     2.2 Main content container
+
+
+// 1. HTML & BODY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+html {}
+body {
+  background-color: $cream;
+  font-family: $font;
+  font-size: 100%;
+  color: $blue;
+  @include at-least($screenXlarge) { font-size: 112%; }
+  @include until($screenMedium) { font-size: 90%; }
+  @include until($screenSmall) { font-size: 80%; }
+}
+// remember to define focus styles!
+:focus { outline: 0; }
+
+// 2. SITE STRUCTURE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// 2.1 Main header, aside & footer
+// Default layout is full width add .layout-sidebar for large screens to have side nav
+
+header {
+  padding: $verticalSpace $gutter;
+  box-shadow: 1px 0px 3px 1px $black;
+  h1, nav {display:inline-block;}
+  h1 {width:70%;}
+  nav {
+    width:29%; text-align:right;
+    ul {
+      @include clearListStyles();
+      li {
+        text-transform: uppercase;
+        font-size:1.2em;
+      }
+    }
+  }
+}
+
+.main-hero {
+  padding: $verticalSpace*3 $gutter*2;
+  opacity: 0.8;
+  background:$taupe url('../images/hero-crochet-yarn.jpg') no-repeat center center;
+  background-size:cover;
+  color:$white;
+  p {width:60%;}
+
+}
+@supports(background-blend-mode:multiply) {
+  .main-hero {background-blend-mode:multiply;}
+}
+@supports-not(background-blend-mode:multiply) {
+  .main-hero {opacity:0.8;}
+}
+
+.main-content {
+  padding:$verticalSpace $gutter;
+  ul {
+    display:flex; justify-content:space-between;
+    flex-wrap: wrap;
+    @include clearListStyles();
+    li {
+      padding:$verticalSpace/4 $gutter/4 0px; margin:2% 1%;
+      box-sizing: border-box;
+      width:24%; min-width:30%; max-width:570px;
+      background-color:$white;
+      border:1px solid transparentize($black,0.9);
+      box-shadow: 0 12px 26px -17px $black;
+      transform: rotate(1deg);
+      &:hover {transform:rotate(0deg);}
+      img {border:1px solid $pink;}
+    }
+  }
+}
+
+$totalListings:7;
+
+@for $i from 1 through $totalListings {
+  $deg:random(6)-3;
+  .main-content ul li:nth-of-type(#{$i}) {
+    transform: rotate(#{$deg}deg);
+  }
+}
+
+footer {
+  padding: $verticalSpace 0px 0px;
+  display:flex; justify-content:space-between;
+  border-top: 2px solid $brand2;
+  @include until($screenMedium) {
+    display: block;
+    text-align: center;
+  }
+  p, ul {
+      width:50%;
+      @include until($screenMedium) {
+        width:100%;
+      }
+  }
+  ul {
+    @include clearListStyles;
+    display: flex; justify-content:flex-end;
+    @include until($screenMedium) {
+      justify-content: center;
+      flex-wrap:wrap;
+    }
+    li {
+      a {
+        border:none;
+        svg {
+          width:auto; height:54px;
+          padding:$verticalSpace/2 $gutter/2;
+          box-sizing:border-box;
+          background-color: $brand6;
+          border-radius: 2px;
+          @include smallFancyBorder($brand2, $brand6);
+          path {fill:$brand2;}
+        }
+        &:hover {
+          svg {
+            background-color:$brand2;
+            path {fill:$brand6;}
+          }
+        }
+      }
+    }
+  }
+}
+
+// footer {
+//   ul li {
+//     &:nth-of-type(1) {
+//       a:hover svg {background-color: $brand1;}}
+//     &:nth-of-type(2) {
+//       a:hover svg {background-color: $brand2;}}
+//     &:nth-of-type(3) {
+//       a:hover svg {background-color: $brand3;}}
+//     &:nth-of-type(4) {
+//       a:hover svg {background-color: $brand4;}}
+//     &:nth-of-type(5) {
+//       a:hover svg {background-color: $brand5;}}
+//     &:nth-of-type(6) {
+//       a:hover svg {background-color: $brand6;}}
+    
+//   }
+// }
+
+main {
+  position: relative;
+  flex: 1 0 auto; box-sizing:border-box;
+}
+main::after {
+  content: '\00a0'; /* &nbsp; */
+  display: block;
+  margin-top: $verticalSpace;
+  height: 0px;
+  visibility: hidden;
+}

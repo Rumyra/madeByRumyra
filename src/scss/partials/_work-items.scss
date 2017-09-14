@@ -1,0 +1,72 @@
+// grid layout stuff
+
+$itemCount:60;
+
+.portfolio-list {
+  ul {
+    display: grid; justify-content:end;
+  }
+  li {
+    width: 6vw; height:6vw;
+    position: relative;
+
+    @for $i from 0 through ($itemCount)-1 {
+      $row: ceil( ($i+1)/10 );
+      $col: ( (($i%10)+1)*-1 )-$row;
+      $col2:( (($i%10)+1)*-1 )-($row+1);
+      &:nth-of-type(#{$i+1}) {grid-area: 
+        $row #{'/'}
+        $col #{'/'}
+        $row #{'/'}
+        $col2;
+      }
+    }
+
+    &:nth-of-type(1) {grid-area: 1 / -1 / 1 / -2;}
+    &:nth-of-type(2) {grid-area: 1 / -2 / 1 / -3;}
+    &:nth-of-type(3) {grid-area: 1 / -3 / 1 / -4;}
+
+    &:nth-of-type(4) {grid-area: 2 / -2 / 2 / -3;}
+    &:nth-of-type(5) {grid-area: 2 / -3 / 2 / -4;}
+
+    &:nth-of-type(6) {grid-area: 3 / -3 / 3 / -4;}
+    &:nth-of-type(7) {grid-area: 2 / -4 / 2 / -5;}
+
+
+
+    img {
+      position: absolute;
+      left: 0px; top: 0px;
+    }
+  }
+}
+
+// full item layout
+.portfolio-list .featured {
+
+  position: absolute; top:0px; left:0px;
+  width: 60vw; height: 100%;
+  display: grid;
+  grid-template-columns: 64% 36%;
+  grid-template-rows: 1fr 4fr 2fr 1fr 1fr;
+
+  border: 1px solid red;
+  
+
+  .tags {border:1px solid blue; grid-area:1/1/2/2;}
+  article {border:1px solid green; grid-area:2/1/4/2;}
+  .quote-slider {border:1px solid yellow; grid-area:4/1/6/2;}
+
+  .date {border:1px solid orange; grid-area:1/2/2/3;}
+  .map {
+    border:1px solid red; grid-area:2/2/3/3;
+  }
+  .media {border:1px solid purple; grid-area:3/2/5/3;}
+  nav {border:1px solid blue; grid-area:5/2/6/3;}
+}
+
+
+
+
+
+
