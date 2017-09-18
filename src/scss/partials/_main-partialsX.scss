@@ -9,7 +9,7 @@
 // 1. HTML & BODY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 html {}
 body {
-  background-color: $cream;
+  background-color: $taupe;
   font-family: $font;
   font-size: 100%;
   color: $blue;
@@ -44,47 +44,62 @@ header {
 .main-hero {
   padding: $verticalSpace*3 $gutter*2;
   opacity: 0.8;
-  background:$taupe url('../images/hero-crochet-yarn.jpg') no-repeat center center;
+  background-color:$purple;
+  background-image: url('../images/hero-crochet-yarn.jpg'), linear-gradient(45deg, $blue, $purple, $peach);
+  background-repeat:no-repeat;
+  background-position: center center;
   background-size:cover;
   color:$white;
+  filter: contrast(1.2) brightness(1.1);
   p {width:60%;}
 
 }
-@supports(background-blend-mode:multiply) {
-  .main-hero {background-blend-mode:multiply;}
+@supports(background-blend-mode:overlay) {
+  .main-hero {background-blend-mode:overlay;}
 }
-@supports-not(background-blend-mode:multiply) {
+@supports-not(background-blend-mode:overlay) {
   .main-hero {opacity:0.8;}
 }
 
 .main-content {
-  padding:$verticalSpace $gutter;
   ul {
     display:flex; justify-content:space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap; align-items: stretch;
     @include clearListStyles();
     li {
-      padding:$verticalSpace/4 $gutter/4 0px; margin:2% 1%;
+      position: relative;
       box-sizing: border-box;
-      width:24%; min-width:30%; max-width:570px;
-      background-color:$white;
-      border:1px solid transparentize($black,0.9);
-      box-shadow: 0 12px 26px -17px $black;
-      transform: rotate(1deg);
-      &:hover {transform:rotate(0deg);}
-      img {border:1px solid $pink;}
+      margin:0px; padding:0px;
+      width:33.3%;
+      background-color: $peach;
+      background-image:
+        linear-gradient(0deg, transparentize($blue, 0.5) 0%, transparent 50%),
+        linear-gradient(90deg, transparentize($blue, 0.5) 0%, transparent 50%),
+        linear-gradient(180deg, transparentize($blue, 0.5) 0%, transparent 50%),
+        linear-gradient(270deg, transparentize($blue, 0.5) 0%, transparent 50%)
+      ;
+      a {margin:0px; padding:0px;}
+      img {
+        display: block;
+        width: 100%;
+        margin:0px;
+        border: 1px solid $white;
+        filter: contrast(1.2) opacity(0.7);
+      }
+      p {
+        position:absolute; top:0px; left:0px;
+        width:100%;
+        padding: $verticalSpace $gutter; margin:0px;
+        box-sizing: border-box;
+        text-align: center;
+      }
     }
   }
 }
 
 $totalListings:7;
 
-@for $i from 1 through $totalListings {
-  $deg:random(6)-3;
-  .main-content ul li:nth-of-type(#{$i}) {
-    transform: rotate(#{$deg}deg);
-  }
-}
+@for $i from 1 through $totalListings {}
 
 footer {
   padding: $verticalSpace 0px 0px;
