@@ -42,7 +42,7 @@ header {
 }
 
 .main-hero {
-  padding: $verticalSpace*3 $gutter*2;
+  padding: $verticalSpace*3 $gutter*2; margin-bottom:$verticalSpace/2;
   opacity: 0.8;
   background-color:$purple;
   background-image: url('../images/hero-crochet-yarn.jpg'), linear-gradient(45deg, $blue, $purple, $peach);
@@ -50,7 +50,7 @@ header {
   background-position: center center;
   background-size:cover;
   color:$white;
-  filter: contrast(1.2) brightness(1.1);
+  filter: contrast(1.2) brightness(1.1) saturate(75%);
   p {width:60%;}
 
 }
@@ -72,34 +72,58 @@ header {
       margin:0px; padding:0px;
       width:33.3%;
       background-color: $peach;
-      background-image:
-        linear-gradient(0deg, transparentize($blue, 0.5) 0%, transparent 50%),
-        linear-gradient(90deg, transparentize($blue, 0.5) 0%, transparent 50%),
-        linear-gradient(180deg, transparentize($blue, 0.5) 0%, transparent 50%),
-        linear-gradient(270deg, transparentize($blue, 0.5) 0%, transparent 50%)
-      ;
-      a {margin:0px; padding:0px;}
-      img {
-        display: block;
-        width: 100%;
-        margin:0px;
-        border: 1px solid $white;
-        filter: contrast(1.2) opacity(0.7);
-      }
-      p {
-        position:absolute; top:0px; left:0px;
-        width:100%;
-        padding: $verticalSpace $gutter; margin:0px;
-        box-sizing: border-box;
-        text-align: center;
+      a {
+        margin:0px; padding:0px;
+        display:block;
+        box-shadow: inset 0px 0px 1px $gutter/2 transparentize($white,0.8);
+
+        img {
+          display: block;
+          width: 100%;
+          margin: 0px;
+          border: 1px solid $white;
+          filter: contrast(1.2) opacity(0.4) saturate(75%);
+          mix-blend-mode: luminosity;
+          transition: filter 1s ease 0s;
+        }
+        p {
+          position:absolute; top:0px; left:0px;
+          width:100%;
+          padding: $verticalSpace $gutter; margin:0px;
+          box-sizing: border-box;
+          text-align:center; color:$white;
+          opacity:1;
+          transition: opacity 1s ease 0s;
+        }
+        button {
+          position:absolute; bottom:0px; left:0px;
+          padding:$verticalSpace/2 $gutter;
+          background-color:$peach;
+          color:white; font-size:$fontSize;
+        }
+
+        &:hover {
+          
+          img {filter: contrast(1.2) opacity(0.7) saturate(55%);}
+          p {opacity:0;}
+        }
+
       }
     }
   }
 }
 
-$totalListings:7;
+// could I use a transition as a hack for amount of mixblend mode
 
-@for $i from 1 through $totalListings {}
+$totalListings:7;
+$imgBkColors: ($blue, $purple, $pink, $peach);
+
+@for $i from 1 through $totalListings {
+  $arrayNo: $i%4;
+  .main-content ul li:nth-of-type(#{$i}) {
+    background-color: nth($imgBkColors, $arrayNo+1);
+  }
+}
 
 footer {
   padding: $verticalSpace 0px 0px;
