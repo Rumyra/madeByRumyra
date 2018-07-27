@@ -22,22 +22,19 @@ $errorColour: $pink;
 $successColour: $blue;
 
 //2.2 Font imports & settings
-@include font-face('Font Awesome', '../fonts/fontAwesome/fontawesome-webfont');
-@include font-face('Khula', '../fonts/Khula/Khula-Light');
-@include font-face('Khula', '../fonts/Khula/Khula-SemiBold', bold);
-@include font-face('Great Vibes', '../fonts/GreatVibes/GreatVibes-Regular', normal, italic);
+@include font-face('Khula', '../fonts/Khula-Light');
+@include font-face('Khula', '../fonts/Khula-Bold', bold);
+@include font-face('Lora', '../fonts/Lora-Regular', normal);
+@include font-face('Lora', '../fonts/Lora-Italic', normal, italic);
+@include font-face('Lora', '../fonts/Lora-Bold', bold);
 
-$font:'Khula', Helvetica, Arial, sans-serif !default;
+$font:'Lora', Helvetica, Arial, sans-serif !default;
 $fontSize:1em !default;
-$lineHeight:1.8 !default;
+$lineHeight:1.6 !default;
 $letterSpacing:0.05em;
 
 $headerFont: 'Khula', Helvetica, Arial, sans-serif !default;
 $headerLineHeight:1.5;
-
-$iconFont:'Font Awesome', monospace !default;
-$iconFontSize:20px !default;
-$iconLineHeight:25px !default;
 
 // top and bottom space
 $verticalSpace:1.8em !default;
@@ -49,6 +46,7 @@ $screenSmall:620px;
 $screenMedium:769px;
 $screenLarge:860px;
 $screenXlarge:1280px;
+
 
 
 

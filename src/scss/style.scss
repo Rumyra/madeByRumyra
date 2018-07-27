@@ -4,23 +4,23 @@
 //  If you create any extras (such as ui elements), create a file for them & add them in here.
 
 /* reset margins, padding, borders & outline. Sets HTML block elements, also includes a couple of bits of normalize.css */
-@import 'partials/_resetX.scss';
+@import 'partials/_reset.scss';
 
-@import 'partials/_helpersX.scss';
+@import 'partials/_helpers.scss';
 /* set colours, fonts, sizes & breakpoints */
-@import 'partials/_settingsX.scss';
+@import 'partials/_settings.scss';
 
 
 
 /* HTML ELEMENTS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* headers, paragraphs, lists, formatting etc... */
-@import 'partials/_typographic-elementsX.scss';
+@import 'partials/_typographic-elements.scss';
 
 /* forms */
-// @import 'partials/_formsX.scss';
+// @import 'partials/_forms.scss';
 
 /* images, audio, video, canvas etc... */
-@import 'partials/_mediaX.scss';
+@import 'partials/_media.scss';
 
 /* UI ELEMENTS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -30,13 +30,16 @@
 /* navigation and menus */
 // @import 'partials/_nav-menu.scss';
 
+/*grid*/
+@import 'partials/_layout.scss';
+
 /* html, body, header, footer & basic main layout */
-@import 'partials/_main-partialsX.scss';
+@import 'partials/_main-partials.scss';
 
 /* PAGE LAYOUTS */
 // @import 'partials/_page-specifics.scss';
 /* portfolio stuff */
-// @import 'partials/_homeX.scss';
+// @import 'partials/_home.scss';
 // @import 'partials/_work-items.scss';
 
 

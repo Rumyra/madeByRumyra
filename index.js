@@ -1,11 +1,13 @@
 const Metalsmith  = require('metalsmith');
 // const serve = require('metalsmith-serve');
-const watch = require('metalsmith-watch');
+// const watch = require('metalsmith-watch');
 const layouts = require('metalsmith-layouts');
 const sass = require('metalsmith-sass');
 const markdown = require('metalsmith-markdown');
 const drafts = require('metalsmith-drafts');
 const define = require('metalsmith-define');
+const ignore = require('metalsmith-ignore');
+const helpers = require('metalsmith-register-helpers');
 var fetch = require('node-fetch');
 
 // var etsyData;
@@ -20,7 +22,7 @@ fetch("https://openapi.etsy.com/v2/shops/MadeByRumyra/listings/active?limit=100&
       .metadata({
         site: {
           title: 'Made By Rumyra',
-          description: 'Hand made from Made By Rumyra, crochet patterns, tailored items, all designed and made by Ruth John.',
+          description: 'Hand made from Made By Rumyra, crochet patterns, laser cut items, tailored items, all designed and made by Ruth John.',
           generator: 'Metalsmith',
           url: 'https://www.madebyrumyra.com'
         }
@@ -32,6 +34,7 @@ fetch("https://openapi.etsy.com/v2/shops/MadeByRumyra/listings/active?limit=100&
 
       .source('./src')
       .destination('./docs')
+
       .clean(true) // rebuild everything
 
       .use(sass({
@@ -41,29 +44,42 @@ fetch("https://openapi.etsy.com/v2/shops/MadeByRumyra/listings/active?limit=100&
 
       .use(drafts())
       .use(markdown())
+      .use(helpers({
+        directory: 'src/_helpers'
+      }))
 
       .use(layouts({
-        engine: 'handlebars'
+        engine: 'handlebars',
+        default: "layout.hbs",
+        pattern: "**/*.html"
       }))
+
+      .use(ignore([
+        'scss/**',
+        'scss/**/.*',
+        '_helpers/**',
+        '_helpers/**/.*'
+      ]))
+
 
       // .use(serve())
 
-      .use(
-        watch({
-          paths: {
-            '${source}/**/*': true,
-            'layouts/**/*': true,
-          }
-        })
-      )
+      // .use(
+      //   watch({
+      //     paths: {
+      //       '${source}/**/*': true,
+      //       'layouts/**/*': true,
+      //     }
+      //   })
+      // )
 
       .build(function(err, files) {
         if (err) { throw err; }
       });
 
-    // console.log(etsyData);
+    console.log(etsyData);
 
   } )
   .catch( (err) => console.log('sad face '+err) );
 
-    
+

@@ -1,0 +1,7 @@
+/*media*/
+img {
+  width: 100%;
+	height: auto;
+}
+
+img { @include simple-vendor-prefix(box-sizing,border-box); }
